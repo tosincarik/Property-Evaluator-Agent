@@ -1,0 +1,7 @@
+pandas
+numpy
+openai
+requests
+streamlit
+gradio
+joblib
