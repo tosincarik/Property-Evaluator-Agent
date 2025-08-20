@@ -2,14 +2,12 @@
 
 
 from dotenv import load_dotenv
-from IPython.display import Markdown
 from openai import OpenAI
 from pypdf import PdfReader
 import os
 import pandas as pd
 import gradio as gr
-import gradio as gr
-from openai import OpenAI
+
 
 load_dotenv(override=True)
 
