@@ -1,7 +1,6 @@
+openai
+python-dotenv
+pypdf2
 pandas
 numpy
-openai
-requests
 streamlit
-gradio
-joblib

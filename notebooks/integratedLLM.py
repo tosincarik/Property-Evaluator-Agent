@@ -1,21 +1,21 @@
 
 
-# %%
+
 from dotenv import load_dotenv
 from IPython.display import Markdown
 from openai import OpenAI
 from pypdf import PdfReader
 import os
+import pandas as pd
 import gradio as gr
+import gradio as gr
+from openai import OpenAI
 
-# %%
 load_dotenv(override=True)
 
-# %%
+
 openaiapi = os.getenv("OPENAI_API_KEY")
 groqapi = os.getenv("groq_api_key")
-
-# %%
 if openaiapi:
     print(f"Openai key is found and starts with: {openaiapi[:8]}")
 else:
@@ -26,7 +26,7 @@ if groqapi:
 else:
     print("groqapi ai api not found")
 
-# %%
+
 # System prompt tailored for property recommendations
 system_prompt_property = """
 You are a real estate advisor AI. 
@@ -37,20 +37,13 @@ Always consider price affordability and feature match.
 """
 
 
-# %%
-processed_path = "../data/processed/cleaned_property_data.csv"
 
-# %%
 
-import pandas as pd
 
 # Ensure df_cleaned is a DataFrame
 processed_path = "../data/processed/cleaned_property_data.csv"
 df_cleaned = pd.read_csv(processed_path)
 
-
-# %%
-df_cleaned
 
 # %%
 openai = OpenAI()
@@ -70,28 +63,12 @@ def chat_property(user_prompt, history=[]):
     return reply
 
 
-# %%
-# Example user input
-user_prompt = get_recommendation_input(
-    budget=200000000, 
-    location="Lagos", 
-    property_type="Apartment", 
-    bedrooms=3
-)
+
 
 # Generate GPT-4 recommendation
-reply = chat_property(user_prompt)
-print(reply)
-
 
 # %%
 processed_path = "../data/processed/cleaned_property_data.csv"
-
-# %%
-import gradio as gr
-from openai import OpenAI
-
-processed_path = "C:/Users/Admin/projects/Property-Evaluator-Agent/data/processed/cleaned_property_data.csv"
 df_cleaned = pd.read_csv(processed_path)
 # Your existing functions
 client = OpenAI()
@@ -173,9 +150,5 @@ with gr.Blocks() as demo:
     )
 
 demo.launch()
-
-
-# %%
-
 
 
