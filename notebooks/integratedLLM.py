@@ -1,5 +1,4 @@
-# %%
-!pip install openai python-dotenv pypdf gradio
+
 
 # %%
 from dotenv import load_dotenv
