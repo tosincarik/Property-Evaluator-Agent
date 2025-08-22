@@ -72,3 +72,66 @@ Before getting started, ensure you have the following installed:
 
    ```bash
    git clone https://github.com/yourusername/property-advisor-ai.git
+   ```
+   Then, navigate into the project directory:
+   
+  ```bash
+   cd property-advisor-ai
+  ```
+2. **Install the required dependencies**:
+
+Next, install all the required dependencies listed in the requirements.txt file using pip. Run the following command:
+
+```bash
+pip install -r requirements.txt
+ ```
+
+This will install the necessary Python libraries, including openai, pandas, gradio, and python-dotenv.
+
+3. Set up environment variables:
+
+Create a .env file in the root directory of your project and add your OpenAI API key. The .env file should contain:
+Replace your_openai_api_key with your actual OpenAI API key.
+
+```bash
+OPENAI_API_KEY=your_openai_api_key
+```
+
+Run the app:
+
+Once the environment is set up, you can run the app locally by executing:
+
+```bash
+python app.py
+```
+
+
+## Usage
+
+Once the app is running, you can interact with the Property Advisor AI Chatbot as follows:
+
+### Input your property preferences:
+
+- **Budget (₦)**
+- **Location** (e.g., Lagos)
+- **Property Type** (e.g., Apartment)
+- **Number of Bedrooms**
+
+### Engage with the AI:
+
+The chatbot will provide you with the top 3 property recommendations based on your preferences and the available dataset.
+
+### Ask Follow-up Questions:
+
+You can engage in follow-up questions or adjust your preferences, and the chatbot will refine the recommendations accordingly.
+
+## Project Architecture
+
+This project integrates the following technologies:
+
+- **OpenAI GPT-4**: Used for natural language understanding and generating property recommendations.
+- **Gradio**: Used for building the user interface, allowing users to interact with the chatbot.
+- **Pandas**: Used for loading and manipulating the property dataset.
+- **Python-dotenv**: Manages API keys securely.
+
+
