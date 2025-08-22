@@ -81,6 +81,50 @@ Prerequisites
 
 Python 3.9+
 
+
+
+
+
+
+
+Workflow Diagram
+
+(Optional: Include a simple workflow diagram here)
+
+Usage
+
+Once the app is running:
+
+Input your property preferences:
+
+Budget (₦)
+
+Location (e.g., Lagos)
+
+Property Type (e.g., Apartment)
+
+Number of Bedrooms
+
+Interact with the AI:
+
+The chatbot will provide you with the top 3 property recommendations based on your preferences and the available dataset.
+
+Engage in Follow-up Conversations:
+
+You can ask follow-up questions or adjust your preferences, and the chatbot will adjust its recommendations accordingly.
+
+Project Architecture
+
+This project integrates the following technologies:
+
+OpenAI GPT-4: Used for natural language understanding and generating property recommendations.
+
+Gradio: Used for building the user interface, allowing users to interact with the chatbot.
+
+Pandas: Used for loading and manipulating the property dataset.
+
+Python-dotenv: Manages API keys securely.
+
 Dependencies:
 
 openai (for GPT-4 integration)
