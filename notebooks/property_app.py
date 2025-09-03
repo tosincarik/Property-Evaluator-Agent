@@ -71,7 +71,9 @@ def respond(message, history, budget=None, location=None, property_type=None, be
 
     reply = chat_property(user_prompt, history)
     history.append((user_prompt, reply))
-    return history, history
+    
+    # Return chat history and empty string to clear the input box
+    return history, history, ""  # <-- added third return value clears the textbox
 
 # Build Gradio interface
 with gr.Blocks() as demo:
@@ -90,7 +92,15 @@ with gr.Blocks() as demo:
     send_button = gr.Button("Send")
 
     # Connect both button and Enter key to respond()
-    send_button.click(respond, inputs=[user_input, state, budget, location, property_type, bedrooms], outputs=[chatbot, state])
-    user_input.submit(respond, inputs=[user_input, state, budget, location, property_type, bedrooms], outputs=[chatbot, state])
+    send_button.click(
+        respond,
+        inputs=[user_input, state, budget, location, property_type, bedrooms],
+        outputs=[chatbot, state, user_input]  # <-- add user_input here to clear after send
+    )
+    user_input.submit(
+        respond,
+        inputs=[user_input, state, budget, location, property_type, bedrooms],
+        outputs=[chatbot, state, user_input]  # <-- same here
+    )
 
 demo.launch()
