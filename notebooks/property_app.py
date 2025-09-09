@@ -1,3 +1,4 @@
+
 import os
 import uuid
 import pandas as pd
@@ -6,7 +7,7 @@ from dotenv import load_dotenv
 from supabase import create_client, Client
 from openai import OpenAI
 
-# Load environment variables
+
 load_dotenv(override=True)
 
 SUPABASE_URL = os.getenv("SUPABASE_URL")
@@ -23,6 +24,22 @@ if not OPENAI_API_KEY:
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 client = OpenAI(api_key=OPENAI_API_KEY)
 
+
+openaiapi = os.getenv("OPENAI_API_KEY")
+groqapi = os.getenv("groq_api_key")
+
+
+if openaiapi:
+    print(f"Openai key is found and starts with: {openaiapi[:8]}")
+else:
+    print("Open ai api not found")
+
+if groqapi:
+    print(f"groqapi key is found and starts with: {groqapi[:8]}")
+else:
+    print("groqapi ai api not found")
+
+
 # System prompt for property recommendations
 system_prompt_property = """
 You are a real estate advisor AI. 
@@ -32,9 +49,14 @@ Provide a short reasoning for each recommendation.
 Always consider price affordability and feature match.
 """
 
+
 # Load property dataset
 sheet_url = "https://docs.google.com/spreadsheets/d/15h3j-Q-Xepsok2ru5Au_havdWMdJ983qBGBXzceCuig/export?format=csv&gid=474984245"
 df_cleaned = pd.read_csv(sheet_url)
+
+
+
+
 
 # Logging functions
 def log_interaction(session_id, user_message, bot_reply):
@@ -160,3 +182,7 @@ with gr.Blocks() as demo:
     )
 
 demo.launch()
+
+
+
+
