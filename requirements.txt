@@ -3,3 +3,4 @@ openai
 python-dotenv
 pypdf
 gradio
+websockets>=12.0
