@@ -5,7 +5,7 @@ import gradio as gr
 from dotenv import load_dotenv
 from supabase import create_client, Client
 from openai import OpenAI
-
+from utils import format_price, calculate_price_per_sqm, get_affordability_category
 
 # Load environment variables
 load_dotenv(override=True)
@@ -119,10 +119,11 @@ def get_recommendation_input(budget=None, location=None, property_type=None, bed
     prompt += f"Location: {location}\nProperty Type: {property_type}\nBedrooms: {bedrooms}\n\n"
     prompt += "Available properties:\n"
     for idx, row in df_top.iterrows():
-        prompt += f"- {row['Title']} | Price: ₦{row['Price']:,.0f} | Location: {row['Location']} | Bedrooms: {row['Bedrooms']} | Bathrooms: {row['Bathrooms']} | Parking: {row['Parking Spaces']} | Toilets: {row['Toilets']} | Score: {row['Score']}\n"
-
-    return prompt, df_top
-
+        formatted_price = format_price(row['Price'])
+        category = get_affordability_category(row['Price'])
+        
+        prompt += f"- {row['Title']} | Price: {formatted_price} ({category}) | Location: {row['Location']} | Bedrooms: {row['Bedrooms']} | Bathrooms: {row['Bathrooms']} | Parking: {row['Parking Spaces']} | Toilets: {row['Toilets']} | Score: {row['Score']}\n"
+        
 def chat_property(user_message, history):
     """Send conversation to OpenAI API with chat history"""
     messages = [{"role": "system", "content": system_prompt_property}]
