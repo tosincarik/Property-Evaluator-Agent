@@ -118,12 +118,16 @@ def get_recommendation_input(budget=None, location=None, property_type=None, bed
     prompt = f"Recommend top properties based on these preferences:\nBudget: {budget}\n"
     prompt += f"Location: {location}\nProperty Type: {property_type}\nBedrooms: {bedrooms}\n\n"
     prompt += "Available properties:\n"
+
     for idx, row in df_top.iterrows():
         formatted_price = format_price(row['Price'])
         category = get_affordability_category(row['Price'])
         
         prompt += f"- {row['Title']} | Price: {formatted_price} ({category}) | Location: {row['Location']} | Bedrooms: {row['Bedrooms']} | Bathrooms: {row['Bathrooms']} | Parking: {row['Parking Spaces']} | Toilets: {row['Toilets']} | Score: {row['Score']}\n"
-        
+
+
+    return prompt, df_top
+
 def chat_property(user_message, history):
     """Send conversation to OpenAI API with chat history"""
     messages = [{"role": "system", "content": system_prompt_property}]
