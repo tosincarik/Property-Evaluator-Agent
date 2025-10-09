@@ -119,7 +119,7 @@ Once the app is running, you can interact with the Property Advisor AI Chatbot a
 
 ### Engage with the AI:
 
-The chatbot will provide you with the top 3 property recommendations based on your preferences and the available dataset.
+The chatbot here will provide you with the top 3 property recommendations based on your preferences and the available dataset.
 
 ### Ask Follow-up Questions:
 
